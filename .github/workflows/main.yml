@@ -30,7 +30,12 @@ jobs:
         run: npm run build
 
       - name: deploy to production
+<<<<<<< HEAD
         env:
           DEPLOY_KEY: ${{ secrets.PRODUCTION_DEPLOY_KEY }}
         run: |
           echo "Deploying to production..."
+=======
+        run: |
+          echo "Deploying to production environment..."
+>>>>>>> test/ci-check
