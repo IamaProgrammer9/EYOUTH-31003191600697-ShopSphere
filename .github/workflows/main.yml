@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch: # Allows manual trigger from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -24,18 +24,13 @@ jobs:
           node-version: 20
 
       - name: install dependencies
-        run: npm ci
+        run: npm install
 
       - name: build project
         run: npm run build
 
       - name: deploy to production
-<<<<<<< HEAD
         env:
           DEPLOY_KEY: ${{ secrets.PRODUCTION_DEPLOY_KEY }}
         run: |
-          echo "Deploying to production..."
-=======
-        run: |
           echo "Deploying to production environment..."
->>>>>>> test/ci-check
