@@ -1,0 +1,17 @@
+import { Request } from "express";
+import axios from "axios";
+
+export async function getUserFromRequest(req: Request) {
+    const token = req.cookies?.accessToken;
+
+    const cookieHeader = req.headers.cookie;
+
+    // Pass the Cookie header along to Server B
+    const response = await axios.get(`${process.env.BACKEND_URL}/auth/`, {
+        headers: {
+            Cookie: cookieHeader || '',
+        },
+    });
+
+    return response.data;
+}

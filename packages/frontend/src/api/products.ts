@@ -1,4 +1,4 @@
-import api from "./apiService";
+import api, { reviewServiceApi } from "./apiService";
 
 export const createProduct = async (data: FormData) => {
     try {
@@ -104,7 +104,7 @@ export const addProductReview = async ({ productId, rating, comment }: { product
     try {
         return {
             success: true,
-            response: await api.post(
+            response: await reviewServiceApi.post(
                 "/api/products/review",
                 {
                     productId,

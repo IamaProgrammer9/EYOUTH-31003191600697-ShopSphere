@@ -18,16 +18,16 @@ export interface DecodedToken {
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const token = req.cookies?.accessToken;
 
-     if (!token || !req.path.startsWith('/')) {
-         res.status(401).send('Unauthorized');
-         return;
-     }
- 
-     try {
-         const decoded = jwt.verify(token, authConfig.secret) as DecodedToken;
-         (req as any).userId = decoded.userId;
-         next();
-     } catch (error) {
-         res.status(401).send('Access token is not valid');
-     }
- };
+    if (!token || !req.path.startsWith('/')) {
+        res.status(401).send('Unauthorized');
+        return;
+    }
+
+    try {
+        const decoded = jwt.verify(token, authConfig.secret) as DecodedToken;
+        (req as any).userId = decoded.userId;
+        next();
+    } catch (error) {
+        res.status(401).send('Access token is not valid');
+    }
+};

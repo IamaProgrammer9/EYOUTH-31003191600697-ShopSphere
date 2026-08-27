@@ -6,7 +6,7 @@ import { getProductRating } from "./utils/get-product-rating.js";
 /** Paginated view for accessing products in home page */
 export const getProducts = async (req: Request, res: Response) => {
     const page = parseInt(req.query.page as string) || 1;
-    const take = parseInt(req.query.skip as string) || 10;
+    const take = parseInt(req.query.skip as string) || 16;
     const skip = (page - 1) * take;
     const sort = generateSortQueryFromRequest(req);
 
