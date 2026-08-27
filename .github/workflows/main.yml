@@ -1,0 +1,24 @@
+name: CI-pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install dependancies
+        run: npm ci
+
+      - name: builds the project
+        run: npm run build
