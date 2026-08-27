@@ -6,6 +6,8 @@ This contains all the links in the project that you may want:
 1. https://nile-bridge.vercel.app (The main website).
 2. https://nile-bridge-backend.vercel.app (The backend).
 3. https://nile-bridge-backend.vercel.app/health (The health endpoint).
+4. https://nile-bridge-reviews-service.vercel.app/get?productId=1678 (Review service test tend-point)
+5. https://nile-bridge-backend.vercel.app/api/run-analytics (The standalone serverless function).
 
 ## Task 1
 Here are the completed subtasks for Task 1:
@@ -49,3 +51,12 @@ And you can forward to each service:
 2. `kubectl port-forward service/backend-service 3000:3000 -n aws-simulation` (Backend in aws-simulation).
 3. `kubectl port-forward service/frontend-service 5173:5174 -n gcp-simulation` (Frontend in gcp-simulation).
 4. `kubectl port-forward service/backend-service 3000:3001 -n aws-simulation` (Backend in gcp-simulation).
+
+## Task 3
+Task 3 requires the following:
+1. Moving the review service into its own deployment/code base and making the application a microservice application, which was done and it was extracted outside the main backend code and you can view its own code in https://nile-bridge-reviews-service.vercel.app/get?productId=1678 (you can change the productId but make sure that the product exists first).
+2. Add REST communication between the main application and the review service, which was added since the frontend can access the review service directly to get reviews of specific products, and both backends (review service and main backend) can communicate to extract information.
+3. Serverless function integration, which was created as a analytics serverless function that you can view in https://nile-bridge-backend.vercel.app/api/run-analytics, which is outside the main backend code (in dedicated /api folder) and is deployed as its own standalone serverless function in vercel and should run by scheduled amount.
+4. Created an Architecture Decision Record explaining the decisions taken in each sub-task, you can view it in [here](./EYOUTH-31003191600697-ShopSphere-Task3/EYOUTH-31003191600697-ShopSphere-ArchitectureDecisionRecord.md)
+
+You can view the main folder for Task 3 in [EYOUTH-31003191600697-ShopSphere-Task3](./EYOUTH-31003191600697-ShopSphere-Task3/).
