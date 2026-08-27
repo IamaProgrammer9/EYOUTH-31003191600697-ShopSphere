@@ -4,6 +4,7 @@ import * as helmet from "helmet";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import { getProductReviews } from './controllers/get-reviews';
+import { writeProductReview } from './controllers/add-review';
 
 const app = express();
 
@@ -54,6 +55,7 @@ const corsOptions: cors.CorsOptions = {
 // Apply CORS globally before defined routes
 app.use(cors(corsOptions));
 
-app.use('/get', getProductReviews)
+app.get('/get', getProductReviews);
+app.post('/write', writeProductReview);
 
 export default app;

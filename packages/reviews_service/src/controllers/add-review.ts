@@ -4,12 +4,12 @@ import { getUserFromRequest } from "../utils/auth";
 
 export const writeProductReview = async (req: Request, res: Response) => {
     const { productId, rating, comment } = req.body;
-    const userId = (req as any).userId;
     const user = await getUserFromRequest(req);
     if (!user) {
         res.status(401).send('Not authenticated');
         return;
     }
+    const userId = user.id;
 
     // Check if the user already wrote a review about the product
     const existingReview = await prisma.productReview.findUnique({

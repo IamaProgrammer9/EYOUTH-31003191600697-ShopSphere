@@ -86,8 +86,8 @@ export const getProductReviews = async (id: string) => {
     try {
         return {
             success: true,
-            response: await api.get(
-                "/api/products/reviews",
+            response: await reviewServiceApi.get(
+                "/get",
                 {
                     params: {
                         productId: id,
@@ -105,7 +105,7 @@ export const addProductReview = async ({ productId, rating, comment }: { product
         return {
             success: true,
             response: await reviewServiceApi.post(
-                "/api/products/review",
+                "/write",
                 {
                     productId,
                     rating,
