@@ -60,3 +60,5 @@ Task 3 requires the following:
 4. Created an Architecture Decision Record explaining the decisions taken in each sub-task, you can view it in [here](./EYOUTH-31003191600697-ShopSphere-Task3/EYOUTH-31003191600697-ShopSphere-ArchitectureDecisionRecord.md)
 
 You can view the main folder for Task 3 in [EYOUTH-31003191600697-ShopSphere-Task3](./EYOUTH-31003191600697-ShopSphere-Task3/).
+
+## Task 4
