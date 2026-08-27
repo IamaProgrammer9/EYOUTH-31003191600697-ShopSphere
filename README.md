@@ -1,0 +1,51 @@
+# NileBridge (EYOUTH-31003191600697-ShopSphere)
+This is a fullstack, tested, e-commerce platform as a graduation project for Level 5 Web in DECI.
+
+## Project Links
+This contains all the links in the project that you may want:
+1. https://nile-bridge.vercel.app (The main website).
+2. https://nile-bridge-backend.vercel.app (The backend).
+3. https://nile-bridge-backend.vercel.app/health (The health endpoint).
+
+## Task 1
+Here are the completed subtasks for Task 1:
+1. Deployed the frontend to Vercel in https://nile-bridge.vercel.app
+2. Deployed the backend to Vercel in https://nile-bridge-backend.vercel.app
+3. Moved the postgres database from a local one to supabase.
+4. Added health endpoint which is visible in https://nile-bridge-backend.vercel.app/health
+5. Added security practices to the server (rate limiting, configured cors, integrated helmet), and you can see them in [index.ts](packages/backend/src/index.ts).
+6. Registered health endpint with Uptime Robot.
+7. The task requires to add a project links file, which was added in [Tasks1 folder](EYOUTH-31003191600697-ShopSphere-Task1/EYOUTH-31003191600697-ProjectLinks.md).
+
+You can also view the Task 1 folder in EYOUTH-31003191600697-ShopSphere-Task1 Folder.
+
+## Task 2
+Here are the completed tasks for Task 2:
+1. Added the [Architecture Diagram](EYOUTH-31003191600697-ShopSphere-Task2/EYOUTH-31003191600697-ShopSphere-ArchitectureDiagram.pdf) which explains the production deployment in Task 1.
+2. Classified the three services into SaaS/PaaS/IaaS in [here](EYOUTH-31003191600697-ShopSphere-Task2/EYOUTH-31003191600697-ShopSphere-ServiceClassification.pdf)
+3. Successfuly made the multi-cloud namespace simulation, and to try it yourself you need to follow the steps below:
+
+### Testing the Kubernetes namespaces multi-cloud simulation
+If you don't want to build the docker images locally then you can review both yaml files and check that they create both services at [Backend.yaml](packages/backend/EYOUTH-31003191600697-ShopSphere-backend.yaml) and [Frontend.yaml](packages/frontend/EYOUTH-31003191600697-ShopSphere-frontend.yaml).
+
+To test the multi-cloud namespace simulation you need to build the docker images locally for the frontend and backend by running these commands:
+1. `docker build -t backend . -f packages/backend/Dockerfile` To build the backend image.
+2. `docker build -t frontend . -f packages/frontend/Dockerfile` To build the frontend image.
+
+Now we need to create the namespaces and apply the yaml files that create the services for each namespace:
+1. `kubectl create namespace aws-simulation`
+2. `kubectl create namespace gcp-simulation`
+3. `kubectl apply -f packages/frontend/EYOUTH-31003191600697-ShopSphere-frontend.yaml -n aws-simulation`
+4. `kubectl apply -f packages/backend/EYOUTH-31003191600697-ShopSphere-backend.yaml -n aws-simulation`
+5. `kubectl apply -f packages/frontend/EYOUTH-31003191600697-ShopSphere-frontend.yaml -n gcp-simulation`
+6. `kubectl apply -f packages/backend/EYOUTH-31003191600697-ShopSphere-backend.yaml -n gcp-simulation`
+
+Now we can test them by getting the services in each namespace:
+1. `kubectl get services -n aws-simulation`.
+2. `kubectl get services -n gcp-simulation`.
+
+And you can forward to each service:
+1. `kubectl port-forward service/frontend-service 5173:5173 -n aws-simulation` (Frontend in aws-simulation).
+2. `kubectl port-forward service/backend-service 3000:3000 -n aws-simulation` (Backend in aws-simulation).
+3. `kubectl port-forward service/frontend-service 5173:5174 -n gcp-simulation` (Frontend in gcp-simulation).
+4. `kubectl port-forward service/backend-service 3000:3001 -n aws-simulation` (Backend in gcp-simulation).
