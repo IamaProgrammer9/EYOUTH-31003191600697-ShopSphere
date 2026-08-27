@@ -1,13 +1,19 @@
 name: CI-pipeline
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
+  workflow_dispatch: # Allows manual trigger from the GitHub UI
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
+
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -17,8 +23,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: install dependancies
+      - name: install dependencies
         run: npm ci
 
-      - name: builds the project
+      - name: build project
         run: npm run build
+
+      - name: deploy to production
+        env:
+          DEPLOY_KEY: ${{ secrets.PRODUCTION_DEPLOY_KEY }}
+        run: |
+          echo "Deploying to production..."
