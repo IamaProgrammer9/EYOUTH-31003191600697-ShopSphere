@@ -111,6 +111,7 @@ export const addProductReview = async ({ productId, rating, comment }: { product
                     rating,
                     comment,
                 },
+                { withCredentials: true },
             )
         };
     } catch (err: any) {

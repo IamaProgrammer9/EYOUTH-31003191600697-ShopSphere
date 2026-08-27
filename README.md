@@ -9,6 +9,8 @@ This contains all the links in the project that you may want:
 4. https://nile-bridge-reviews-service.vercel.app/get?productId=1678 (Review service test tend-point)
 5. https://nile-bridge-backend.vercel.app/api/run-analytics (The standalone serverless function).
 
+<strong>**Note<strong> The frontend serves static images for products since serving them from Vercel in the backend is not efficient.
+
 ## Task 1
 Here are the completed subtasks for Task 1:
 1. Deployed the frontend to Vercel in https://nile-bridge.vercel.app
@@ -62,4 +64,11 @@ Task 3 requires the following:
 You can view the main folder for Task 3 in [EYOUTH-31003191600697-ShopSphere-Task3](./EYOUTH-31003191600697-ShopSphere-Task3/).
 
 ## Task 4
-1. Test
+1. Added CI/CD Pipeline in github actions that adapts to this criteria.
+2. Added structured logging using the `morgan` library for express which states the endpoint of each request and colors them according to the response (red for errors, yellow for subtle errors, ..etc).
+3. Added a rollback plan in [Rollback](./EYOUTH-31003191600697-ShopSphere-Task4/EYOUTH-31003191600697-ShopSphere-Rollback.md).
+4. Added [project links](./EYOUTH-31003191600697-ShopSphere.md)
+
+## Extra notes
+1. AI was used to generate boiler-plate yaml code, guide me in new topics (especially in github actions), and help debug errors (especially in deployment).
+2. This is the project for student with ID: EYOUTH-31003191600697-ShopSphere.

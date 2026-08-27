@@ -8,6 +8,7 @@ import * as helmet from 'helmet';
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import axios from "axios";
+import morgan from 'morgan';
 
 const app = express();
 
@@ -19,6 +20,8 @@ const limiter = rateLimit({
     ipv6Subnet: 60,
 })
 
+app.use(morgan('dev')); 
+
 // Security middleware
 app.use(limiter);
 app.use(helmet.default({
@@ -28,7 +31,7 @@ app.use(helmet.default({
 app.use(cookieParser());
 app.use(express.json());
 // File middleware
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('../public/uploads'));
 
 const allowedOrigins = [
   'https://nile-bridge.vercel.app',

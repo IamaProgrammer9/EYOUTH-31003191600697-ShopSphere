@@ -54,9 +54,11 @@ export async function refreshToken() {
     try {
         return {
             success: true,
-            response: await api.post(
+            response : await api.post(
                 "/api/auth/refresh",
-            )
+                {},
+                { withCredentials: true }
+            ),
         };
     } catch (err: any) {
         return { success: false, response: err.response };
@@ -74,6 +76,7 @@ export async function IsAuth() {
             success: true,
             response: await api.get(
                 "/api/auth/",
+                { withCredentials: true }
             )
         };
     } catch (err: any) {

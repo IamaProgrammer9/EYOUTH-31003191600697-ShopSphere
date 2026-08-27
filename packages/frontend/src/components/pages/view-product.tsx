@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import Star from "../../assets/star.png";
 import HalfStar from "../../assets/half-star.png";
 import EmptyStar from "../../assets/empty-star.png";
+import Chips from "../../assets/chips.jpeg";
 
 interface ProductReview {
     userName: string;
@@ -59,7 +60,7 @@ export function ViewProduct() {
             alert("Review added successfully");
             initRequest();
         } else {
-            alert("Something wrong happened when adding the review");
+            alert("Try to signin before adding a review.");
         }
     }
 
@@ -83,7 +84,7 @@ export function ViewProduct() {
                 <div className="w-full h-full grid grid-rows-[auto_1fr]">
                     <div className="w-full h-100 flex flex-row justify-center overflow-hidden relative">
                         <img
-                            src={`http://localhost:3000/${product?.imagesUrl[activeImageIndex]}`}
+                            src={Chips}
                             alt={product?.name}
                             className="max-w-200 max-h-full w-auto h-auto object-contain"
                         />

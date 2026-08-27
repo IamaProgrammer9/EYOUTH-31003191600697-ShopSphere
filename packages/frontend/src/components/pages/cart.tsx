@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { Product } from "../items-container";
 import { viewCartItems } from "../../api/cart";
 import { CartItem } from "../cart-item";
+import Chips from "../../assets/chips.jpeg";
 
 export function CartPage() {
     const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -37,7 +38,7 @@ export function CartPage() {
                     <div key={index} className="shrink-0">
                         <CartItem
                             id={item.id.toString()}
-                            image={`http://localhost:3000/${item.imagesUrl[0]}`}
+                            image={Chips}
                             name={`${item.name}`}
                             price={item.price}
                             rating={item.rating}

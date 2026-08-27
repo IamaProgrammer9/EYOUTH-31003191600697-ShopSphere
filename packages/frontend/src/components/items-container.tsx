@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import {ItemCard} from "./item-card.tsx";
 import { getFilteredProducts, getProducts, searchProducts } from "../api/products.ts";
+import Chips from "../assets/chips.jpeg";
 
 export interface Product {
     id: number;
@@ -104,7 +105,7 @@ export function ItemsContainer({ searchQuery, minPrice, maxPrice, categoryId = -
                 
                 return <ItemCard
                     id={el.id.toString()}
-                    image={`http://localhost:3000/${el.imagesUrl[0]}`}
+                    image={Chips}
                     name={`${el.name}`}
                     price={el.price}
                     key={el.id}
