@@ -6,7 +6,7 @@ This contains all the links in the project that you may want:
 1. https://nile-bridge.vercel.app (The main website).
 2. https://nile-bridge-backend.vercel.app (The backend).
 3. https://nile-bridge-backend.vercel.app/health (The health endpoint).
-4. https://nile-bridge-reviews-service.vercel.app/get?productId=1678 (Review service test tend-point)
+4. https://nile-bridge-reviews-service.vercel.app/get?productId=1862 (Review service test tend-point)
 5. https://nile-bridge-backend.vercel.app/api/run-analytics (The standalone serverless function).
 
 <strong>**Note<strong> The frontend serves static images for products since serving them from Vercel in the backend is not efficient.
@@ -28,6 +28,8 @@ Here are the completed tasks for Task 2:
 1. Added the [Architecture Diagram](EYOUTH-31003191600697-ShopSphere-Task2/EYOUTH-31003191600697-ShopSphere-ArchitectureDiagram.pdf) which explains the production deployment in Task 1.
 2. Classified the three services into SaaS/PaaS/IaaS in [here](EYOUTH-31003191600697-ShopSphere-Task2/EYOUTH-31003191600697-ShopSphere-ServiceClassification.pdf)
 3. Successfuly made the multi-cloud namespace simulation, and to try it yourself you need to follow the steps below:
+
+You can view the Task 2 folder in EYOUTH-31003191600697-ShopSphere-Task2 folder.
 
 ### Testing the Kubernetes namespaces multi-cloud simulation
 If you don't want to build the docker images locally then you can review both yaml files and check that they create both services at [Backend.yaml](packages/backend/EYOUTH-31003191600697-ShopSphere-backend.yaml) and [Frontend.yaml](packages/frontend/EYOUTH-31003191600697-ShopSphere-frontend.yaml).
@@ -65,10 +67,11 @@ You can view the main folder for Task 3 in [EYOUTH-31003191600697-ShopSphere-Tas
 
 ## Task 4
 1. Added CI/CD Pipeline in github actions that adapts to this criteria.
-2. Added structured logging using the `morgan` library for express which states the endpoint of each request and colors them according to the response (red for errors, yellow for subtle errors, ..etc).
-3. Added a rollback plan in [Rollback](./EYOUTH-31003191600697-ShopSphere-Task4/EYOUTH-31003191600697-ShopSphere-Rollback.md).
-4. Added [project links](./EYOUTH-31003191600697-ShopSphere.md)
+2. GitHub secrets can be added for security but aren't needed according to the current work-flow.
+3. Added structured logging using the `morgan` library for express which states the endpoint of each request and colors them according to the response (red for errors, yellow for subtle errors, ..etc).
+4. Added a rollback plan in [Rollback](./EYOUTH-31003191600697-ShopSphere-Task4/EYOUTH-31003191600697-ShopSphere-Rollback.md).
+5. Added [project links](./EYOUTH-31003191600697-ShopSphere.md)
 
 ## Extra notes
-1. AI was used to generate boiler-plate yaml code, guide me in new topics (especially in github actions), and help debug errors (especially in deployment).
-2. This is the project for student with ID: EYOUTH-31003191600697-ShopSphere.
+1. AI was only used to generate boiler-plate yaml code, guide me in new topics (especially in github actions), and help debug errors (especially in deployment), and write boiler-plate code.
+2. Student-ID: EYOUTH-31003191600697-ShopSphere.
