@@ -1,4 +1,4 @@
-import api from "./apiService";
+import api, { setAccessToken } from "./apiService";
 
 /**
  * @param email - The user's email address
@@ -7,17 +7,17 @@ import api from "./apiService";
  */
 export async function signin(email: string, password: string): Promise<{ success: boolean, response: any }> {
     try {
-        return {
-            success: true,
-            response: await api.post(
-                "/api/auth/signin",
-                {
-                    email,
-                    password
-                },
-            )
-        };
+        const result = await api.post(
+            "/api/auth/signin",
+            {
+                email,
+                password,
+            }
+        )
+        setAccessToken(result.data.accessToken);
+        return { success: true, response: result };
     } catch (err: any) {
+        setAccessToken(null);
         return { success: false, response: err.response };
     }
 }
@@ -52,15 +52,15 @@ export async function signup(email: string, name: string, password: string, isAd
  */
 export async function refreshToken() {
     try {
-        return {
-            success: true,
-            response : await api.post(
-                "/api/auth/refresh",
-                {},
-                { withCredentials: true }
-            ),
-        };
+        const result = await api.post(
+            "/api/auth/refresh",
+            {},
+            { withCredentials: true }
+        );
+        setAccessToken(result.data.accessToken);
+        return { success: true, response: result };
     } catch (err: any) {
+        setAccessToken(null);
         return { success: false, response: err.response };
     }
 }

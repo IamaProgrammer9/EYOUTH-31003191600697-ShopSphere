@@ -1,4 +1,4 @@
-import api, { reviewServiceApi } from "./apiService";
+import api, { reviewServiceApi, getAccessToken } from "./apiService";
 
 export const createProduct = async (data: FormData) => {
     try {
@@ -110,6 +110,7 @@ export const addProductReview = async ({ productId, rating, comment }: { product
                     productId,
                     rating,
                     comment,
+                    accessToken: getAccessToken(),
                 },
                 { withCredentials: true },
             )

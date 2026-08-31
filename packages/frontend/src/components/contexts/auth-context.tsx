@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { IsAuth, refreshToken } from '../../api/auth';
+import { setAccessToken } from '../../api/apiService';
 
 interface User {
     id: number,
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const logout = () => {
         setIsAuthenticated(false);
         setUser(null);
+        setAccessToken(null);
     }
 
     const checkAuth = async () => {

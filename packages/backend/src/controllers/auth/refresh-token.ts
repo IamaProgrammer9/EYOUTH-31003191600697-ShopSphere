@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import jwt from "jsonwebtoken";
 import { prisma } from "../../lib/prisma.js";
 import {getUserFromRequest} from "../utils.js";
+import { localCookieSettings, deploymentCookieSettings } from "../../settings.js";
 
 import authConfig from "../../auth/auth.config.js";
 
@@ -18,8 +19,6 @@ export async function refreshTokenController(req: Request, res: Response): Promi
         const user = await getUserFromRequest(req);
         const refreshToken = req.cookies.refreshToken;
 
-        console.log(refreshToken)
-
         if (!user || !refreshToken) {
             res.status(401).send('Refresh token not found');
             return;
@@ -31,15 +30,17 @@ export async function refreshTokenController(req: Request, res: Response): Promi
             { expiresIn: authConfig.secret_expires_in as any }
         );
 
+        const cookieSettings = process.env.PRODUCTION === "true"
+            ? deploymentCookieSettings
+            : localCookieSettings;
+
         // Send the new access token in the response
         res.cookie("accessToken", newAccessToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            maxAge: 15 * 60 * 1000,  // 15 minutes
-            sameSite: "strict"
+            ...cookieSettings,
+            maxAge: 15 * 60 * 1000,
         });
 
-        res.send({'detail': 'access token refreshed successfully'});
+        res.json({ accessToken: newAccessToken });
     } catch {
         res.status(401).send('Something wrong happened');
     }
