@@ -6,7 +6,7 @@ This contains all the links in the project that you may want:
 1. https://nile-bridge.vercel.app (The main website).
 2. https://nile-bridge-backend.vercel.app (The backend).
 3. https://nile-bridge-backend.vercel.app/health (The health endpoint).
-4. https://nile-bridge-reviews-service.vercel.app/get?productId=1862 (Review service test tend-point)
+4. https://nile-bridge-reviews-service.vercel.app/get?productId=1862 (Review service test end-point)
 5. https://nile-bridge-backend.vercel.app/api/run-analytics (The standalone serverless function).
 
 <strong>**Note<strong> The frontend serves static images for products since serving them from Vercel in the backend is not efficient.
